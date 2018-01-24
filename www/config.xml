@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- config.xml reference: http://cordova.apache.org/docs/en/latest/config_ref/index.html -->
+<widget xmlns="http://www.w3.org/ns/widgets"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="de.krzn.demo"
+        version="1.0.0">
+
+    <name>PhoneGap Demo</name>
+
+    <description>
+        Demo-App für Phonegap Build
+    </description>
+
+    <author href="https://www.krzn.de" email="dominiqueweymans@gmail.com">
+        Dominique Weymans
+    </author>
+
+    <preference name='phonegap-version' value='cli-7.0.1'/>
+
+</widget>
