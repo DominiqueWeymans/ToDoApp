@@ -9,8 +9,59 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="js/jquery-mobile/jquery.mobile-1.4.5.min.css">
+        <script src="js/jquery-2.1.4.min.js"></script>
+        <script src="js/jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
     </head>
     <body>
-        <div>erste App</div>
+        <div data-role="page">
+            <h1>Die neue App</h1>
+            <div data-role="main" class="ui-content jqm-content">
+                <form id="inputform">
+                    <textarea cols="40" rows="8" name="textarea" id="itextarea"></textarea>
+                    <input type="submit" value="absenden">
+                </form>
+
+                <ul id="todoul" data-role="listview" data-inset="true">
+                </ul>
+                <script>
+                    todoarray = [];
+                    function deleteitem(value) {
+                        var index = todoarray.indexOf(value);
+                        todoarray.splice(index, 1);
+                        saveList();
+                        $("#todo" + index).remove();
+                        $("#todoul").text("");
+                        $.each(todoarray, function (key, value) {
+                            addToList(value);
+                        });
+                    }
+
+                    function saveList() {
+                        localStorage.setItem("todos", JSON.stringify(todoarray));
+                    }
+
+                    function addToList(todo) {
+                        $("#todoul").append('<li data-icon="check"><a class="todolink" href="#" onclick="deleteitem(\'' + todo + '\')">' + todo + '</a></li>').listview("refresh");
+                    }
+                    
+                    $(document).ready(function (e) {
+                        todoarray = JSON.parse(localStorage.getItem("todos"));
+                        $.each(todoarray, function (key, value) {
+                            addToList(value);
+                        });
+                    });
+
+                    $("#inputform").on("submit", function (e) {
+                        var todo = $("#itextarea").val();
+                        $("#itextarea").val("");
+                        todoarray.push(todo);
+                        saveList();
+                        addToList(todo);
+                        e.preventDefault();
+                    });
+                </script>
+            </div>
+        </div>
     </body>
 </html>

@@ -6,7 +6,7 @@
         id="de.krzn.demo"
         version="1.0.0">
 
-    <name>PhoneGap Demo</name>
+    <name>ToDoList</name>
 
     <description>
         Demo-App für Phonegap Build
