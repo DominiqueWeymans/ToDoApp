@@ -46,6 +46,10 @@ and open the template in the editor.
                     }
                     
                     $(document).ready(function (e) {
+                        if(localStorage.getItem("todos") == null){
+                            todoarray=[];
+                            saveList();
+                        }
                         todoarray = JSON.parse(localStorage.getItem("todos"));
                         $.each(todoarray, function (key, value) {
                             addToList(value);
